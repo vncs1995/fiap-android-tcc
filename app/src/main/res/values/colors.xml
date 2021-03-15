@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary_text_color">#0F110C</color>
+    <color name="secondary_text_color">#A9BCD0</color>
+    <color name="error_color">#FE654F</color>
+    <color name="success_color">#D0FCB3</color>
+    <color name="primary">#9B7E46</color>
+    <color name="secondary">#FFEFD3</color>
+    <color name="tertiary">#432818</color>
+    <color name="white">#FFF</color>
+    <color name="disabled">#F2F4F6</color>
+
+</resources>
