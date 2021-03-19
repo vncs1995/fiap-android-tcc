@@ -20,6 +20,7 @@ import br.com.borrowgame.domain.usecases.user.LoginUseCase
 import br.com.borrowgame.ui.base.BaseFragment
 import br.com.borrowgame.ui.base.auth.NAVIGATION_KEY
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 @ExperimentalCoroutinesApi
@@ -30,7 +31,11 @@ class LoginFragment : BaseFragment() {
     private lateinit var password: EditText
     private lateinit var btnRegister: Button
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         registerBackPressedAction()
         return super.onCreateView(inflater, container, savedInstanceState)
     }
@@ -63,7 +68,7 @@ class LoginFragment : BaseFragment() {
     private fun showSuccess() {
         hideLoading()
         val navIdForArguments = arguments?.getInt(NAVIGATION_KEY)
-        if(navIdForArguments == null) {
+        if (navIdForArguments == null) {
             findNavController().navigate(R.id.main_nav_graph)
         } else {
             findNavController().popBackStack(navIdForArguments, false)
@@ -86,7 +91,7 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun registerBackPressedAction() {
-        val callback = object: OnBackPressedCallback(true) {
+        val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 activity?.finish()
             }
@@ -94,16 +99,19 @@ class LoginFragment : BaseFragment() {
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
     }
 
-    private val loginViewModel : LoginViewModel by lazy {
-        ViewModelProvider(this, LoginViewModelFactory(
+    private val loginViewModel: LoginViewModel by lazy {
+        ViewModelProvider(
+            this, LoginViewModelFactory(
                 LoginUseCase(
-                        UserRepositoryImpl(
-                                UserRemoteDataSourceImpl(
-                                        Firebase.auth
-                                )
+                    UserRepositoryImpl(
+                        UserRemoteDataSourceImpl(
+                            Firebase.auth,
+                            Firebase.firestore
                         )
+                    )
                 )
-        )).get(LoginViewModel::class.java)
+            )
+        ).get(LoginViewModel::class.java)
     }
 
 }

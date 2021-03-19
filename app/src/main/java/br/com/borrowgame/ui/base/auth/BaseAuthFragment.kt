@@ -15,6 +15,7 @@ import br.com.borrowgame.domain.entity.RequestState
 import br.com.borrowgame.domain.usecases.user.GetUserLoggedUseCase
 import br.com.borrowgame.ui.base.BaseFragment
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
@@ -25,7 +26,7 @@ abstract class BaseAuthFragment : BaseFragment() {
         ViewModelProvider(
             this,
 
-            BaseViewModelFactory(GetUserLoggedUseCase(UserRepositoryImpl(UserRemoteDataSourceImpl(Firebase.auth))))
+            BaseViewModelFactory(GetUserLoggedUseCase(UserRepositoryImpl(UserRemoteDataSourceImpl(Firebase.auth, Firebase.firestore))))
         ).get(BaseAuthViewModel::class.java)
     }
     override fun onCreateView(

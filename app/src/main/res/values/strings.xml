@@ -11,4 +11,11 @@
     <string name="label_myaddress">My Address</string>
     <string name="label_availablegames">Available to Borrow</string>
     <string name="label_user_not_logged">User not logged</string>
+    <string name="label_name">Name</string>
+    <string name="label_surname">Surname</string>
+    <string name="label_streetname">Street Name</string>
+    <string name="label_number">Number</string>
+    <string name="label_district">District</string>
+    <string name="label_state">State</string>
+    <string name="label_zipcode">Zip Code</string>
 </resources>

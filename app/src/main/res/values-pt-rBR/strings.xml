@@ -12,4 +12,11 @@
     <string name="label_myaddress">Meu endereço</string>
     <string name="label_availablegames">Disponíveis para trocar</string>
     <string name="label_user_not_logged">Usuário não logado</string>
+    <string name="label_name">Nome</string>
+    <string name="label_surname">Sobrenome</string>
+    <string name="label_streetname">Logradouro</string>
+    <string name="label_number">Número</string>
+    <string name="label_district">Bairro</string>
+    <string name="label_state">Estado</string>
+    <string name="label_zipcode">CEP</string>
 </resources>

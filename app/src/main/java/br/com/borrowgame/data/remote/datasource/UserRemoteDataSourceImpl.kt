@@ -2,15 +2,19 @@ package br.com.borrowgame.data.remote.datasource
 
 import android.util.Log
 import br.com.borrowgame.R
+import br.com.borrowgame.data.remote.mapper.NewUserFirebasePayloadMapper
+import br.com.borrowgame.domain.entity.RegisterUser
 import br.com.borrowgame.domain.entity.RequestState
 import br.com.borrowgame.domain.entity.User
 import br.com.borrowgame.domain.entity.UserLogin
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.tasks.await
 
 class UserRemoteDataSourceImpl(
-        private val mAuth: FirebaseAuth
+        private val mAuth: FirebaseAuth,
+        private val firestore: FirebaseFirestore
 ): UserRemoteDataSource {
     override suspend fun getUserLogged(): RequestState<User> {
         mAuth.currentUser?.reload()
@@ -39,4 +43,36 @@ class UserRemoteDataSourceImpl(
             RequestState.Error(e)
         }
     }
+
+    override suspend fun registerUser(user: RegisterUser): RequestState<User> {
+        return try {
+            mAuth.createUserWithEmailAndPassword(user.credentials.email, user.credentials.password).await()
+            val newUserFirebasePayload =
+                NewUserFirebasePayloadMapper.mapToNewUserFirebasePayload(user)
+            val userId = mAuth.currentUser?.uid
+            if (userId == null) {
+                RequestState.Error(java.lang.Exception("Não foi possível criar a conta"))
+            } else {
+                firestore
+                    .collection("users")
+                    .document(userId)
+                    .set(newUserFirebasePayload)
+                    .await()
+                RequestState.Success(NewUserFirebasePayloadMapper.mapToUser(newUserFirebasePayload))
+            }
+        } catch (e:java.lang.Exception){
+            RequestState.Error(e)
+        }
+    }
+
+    override suspend fun logout(): RequestState<Boolean> {
+        return try {
+            mAuth.signOut()
+            mAuth.currentUser?.reload()
+            RequestState.Success(true)
+        } catch (e:java.lang.Exception){
+            RequestState.Error(e)
+        }
+    }
+
 }

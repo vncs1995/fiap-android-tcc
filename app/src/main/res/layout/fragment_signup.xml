@@ -1,42 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
 
         <TextView
-            style="@style/label_edit_text"
-            android:text="@string/label_welcome" />
+            android:id="@+id/welcome_text"
+            style="@style/text_primary"
+            android:layout_marginHorizontal="20dp"
+            android:text="@string/label_welcome"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            style="@style/label_edit_text"
-            android:text="@string/label_email" />
-        <EditText
+        <LinearLayout
+            android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
+            android:layout_marginHorizontal="20dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/welcome_text">
 
-        <TextView
-            style="@style/label_edit_text"
-            android:text="@string/label_password" />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
+            <TextView
+                style="@style/label_edit_text"
+                android:text="@string/label_email" />
 
-        <Button
-            android:id="@+id/btLogin"
-            android:text="@string/button_sendRegister"
-            style="@style/button"/>
-    </LinearLayout>
+            <EditText
+                android:id="@+id/etEmail"
+                style="@style/field_edit_text" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                style="@style/label_edit_text"
+                android:text="@string/label_password" />
+
+            <EditText
+                android:id="@+id/etPassword"
+                style="@style/field_edit_text" />
+
+            <TextView
+                style="@style/label_edit_text"
+                android:text="@string/label_name" />
+
+            <EditText
+                android:id="@+id/etName"
+                style="@style/field_edit_text" />
+
+            <TextView
+                style="@style/label_edit_text"
+                android:text="@string/label_surname" />
+
+            <EditText
+                android:id="@+id/etSurname"
+                style="@style/field_edit_text" />
+
+            <TextView
+                style="@style/label_edit_text"
+                android:text="@string/label_streetname" />
+
+            <EditText
+                android:id="@+id/etStreetName"
+                style="@style/field_edit_text" />
+
+            <TextView
+                style="@style/label_edit_text"
+                android:text="@string/label_number" />
+
+            <EditText
+                android:id="@+id/etNumber"
+                style="@style/field_edit_text" />
+
+            <TextView
+                style="@style/label_edit_text"
+                android:text="@string/label_district" />
+
+            <EditText
+                android:id="@+id/etDistrict"
+                style="@style/field_edit_text" />
+
+            <TextView
+                style="@style/label_edit_text"
+                android:text="@string/label_state" />
+
+            <EditText
+                android:id="@+id/etState"
+                style="@style/field_edit_text" />
+
+            <TextView
+                style="@style/label_edit_text"
+                android:text="@string/label_zipcode" />
+
+            <EditText
+                android:id="@+id/etZipCode"
+                style="@style/field_edit_text" />
+
+            <Button
+                android:id="@+id/btnRegister"
+                style="@style/button"
+                android:layout_marginTop="20dp"
+                android:text="@string/button_sendRegister" />
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
