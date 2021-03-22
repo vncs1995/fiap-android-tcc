@@ -19,4 +19,18 @@
     <string name="label_district">Bairro</string>
     <string name="label_state">Estado</string>
     <string name="label_zipcode">CEP</string>
+    <string name="button_update_game">Atualizar informações</string>
+    <string name="button_register_game">Adicionar Jogo</string>
+    <string name="label_add_new_game">Adicione um jogo</string>
+    <string name="label_game_name">Nome do Jogo</string>
+    <string name="label_game_number_of_players">Numero de jogadores</string>
+    <string name="label_game_condition">Condição do jogo</string>
+    <string-array name="game_condition">
+        <item>Novo</item>
+        <item>Usado em boas condições</item>
+        <item>Usado com rasuras</item>
+    </string-array>
+    <string name="label_updating_app">Você precisa atualizar para continuar trocando!</string>
+    <string name="label_update_now">Atualizar agora</string>
+    <string name="label_update_later">Atualizar depois</string>
 </resources>

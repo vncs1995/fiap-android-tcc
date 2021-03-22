@@ -18,4 +18,18 @@
     <string name="label_district">District</string>
     <string name="label_state">State</string>
     <string name="label_zipcode">Zip Code</string>
+    <string name="button_register_game">Add New Game</string>
+    <string name="button_update_game">Change Game Info</string>
+    <string name="label_add_new_game">Add New Game</string>
+    <string name="label_game_name">Game Name</string>
+    <string name="label_game_number_of_players">Number of players</string>
+    <string name="label_game_condition">Game condition</string>
+    <string-array name="game_condition">
+        <item>New</item>
+        <item>Good condition</item>
+        <item>Used with rasures</item>
+    </string-array>
+    <string name="label_updating_app">You\'ve got to update your app to continue borrowing!</string>
+    <string name="label_update_now">Update Now</string>
+    <string name="label_update_later">Update Later</string>
 </resources>

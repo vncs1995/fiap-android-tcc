@@ -9,6 +9,7 @@ import br.com.borrowgame.domain.entity.User
 import br.com.borrowgame.domain.entity.UserLogin
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.tasks.await
 
@@ -56,7 +57,7 @@ class UserRemoteDataSourceImpl(
                 firestore
                     .collection("users")
                     .document(userId)
-                    .set(newUserFirebasePayload)
+                    .set(newUserFirebasePayload, SetOptions.merge())
                     .await()
                 RequestState.Success(NewUserFirebasePayloadMapper.mapToUser(newUserFirebasePayload))
             }
