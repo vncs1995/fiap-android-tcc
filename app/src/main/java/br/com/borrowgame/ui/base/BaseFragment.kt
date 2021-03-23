@@ -47,7 +47,7 @@ abstract class BaseFragment : Fragment() {
     ): View? {
         val screenRootView = FrameLayout(requireContext())
         val screenView = inflater.inflate( layout, container, false)
-        loadingView = inflater.inflate( R.layout.include_loading, container,
+        loadingView = inflater.inflate(R.layout.include_loading, container,
             false)
         screenRootView .addView(screenView)
         screenRootView .addView(loadingView )
@@ -86,6 +86,7 @@ abstract class BaseFragment : Fragment() {
         findNavController().setGraph(R.navigation.update_app_nav_graph)
         findNavController().navigate(R.id.updateAppFragment, null, navOptions)
     }
+
     override fun onResume() {
         super.onResume()
         baseViewModel.getMinVersion()

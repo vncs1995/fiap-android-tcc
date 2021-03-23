@@ -6,12 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    android:clickable="true"
-    android:focusable="true"
     android:gravity="center"
-    android:orientation="vertical"
-    tools:visibility="gone"
-    android:visibility="gone">
+    android:orientation="vertical">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/ivLoading"
@@ -27,6 +23,6 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/loading_message_processing"
-        android:textColor="#000000" />
+        style="@style/text_secondary"/>
 
 </LinearLayout>

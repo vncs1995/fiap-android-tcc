@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -12,42 +13,39 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <Button
-        android:id="@+id/logout"
-        android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_games"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Logout"
-        style="?android:attr/borderlessButtonStyle"
-        android:textColor="@color/primary_text_color"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginHorizontal="20dp"
         app:layout_constraintTop_toBottomOf="@id/welcome"
-        />
+        tools:listitem="@layout/game_item_view"/>
 
-    <GridLayout
-        android:id="@+id/grid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/welcome"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:orientation="vertical"
+<!--    <GridLayout-->
+<!--        android:id="@+id/grid"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/welcome"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        android:orientation="vertical"-->
 
-        >
-    <Button
-        android:id="@+id/btnMyGames"
-        android:text="@string/label_mygames"
-        style="@style/home_button"/>
+<!--        >-->
+<!--    <Button-->
+<!--        android:id="@+id/btnMyGames"-->
+<!--        android:text="@string/label_mygames"-->
+<!--        style="@style/home_button"/>-->
 
-    <Button
-        android:id="@+id/btnMyAddress"
-        android:text="@string/label_myaddress"
-        style="@style/home_button"/>
+<!--    <Button-->
+<!--        android:id="@+id/btnMyAddress"-->
+<!--        android:text="@string/label_myaddress"-->
+<!--        style="@style/home_button"/>-->
 
-    <Button
-        android:id="@+id/btnAvailableGames"
-        android:text="@string/label_availablegames"
-        style="@style/home_button"/>
-    </GridLayout>
+<!--    <Button-->
+<!--        android:id="@+id/btnAvailableGames"-->
+<!--        android:text="@string/label_availablegames"-->
+<!--        style="@style/home_button"/>-->
+<!--    </GridLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

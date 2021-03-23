@@ -2,26 +2,12 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/bottomNavBar">
 
     <include app:graph="@navigation/login_graph" />
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="br.com.borrowgame.ui.home.HomeFragment"
-        android:label="HomeFragment" >
-        <action
-            android:id="@+id/action_homeFragment_to_registerGameFragment"
-            app:destination="@id/registerGameFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_addressFragment"
-            app:destination="@id/addressFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/registerGameFragment"
-        android:name="br.com.borrowgame.ui.registergame.RegisterGameFragment"
-        android:label="RegisterGameFragment" />
-    <fragment
-        android:id="@+id/addressFragment"
-        android:name="br.com.borrowgame.ui.address.AddressFragment"
-        android:label="AddressFragment" />
+        android:id="@+id/bottomNavBar"
+        android:name="br.com.borrowgame.ui.navbar.BottomNavBar"
+        android:label="BottomNavBar" />
+
 </navigation>

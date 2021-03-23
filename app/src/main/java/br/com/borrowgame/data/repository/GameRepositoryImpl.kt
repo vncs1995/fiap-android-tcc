@@ -13,8 +13,8 @@ class GameRepositoryImpl (
         return gamesRemoteDatasource.registerGame(game)
     }
 
-    override suspend fun getGames(game: Game): RequestState<Game> {
-        return gamesRemoteDatasource.getGames(game)
+    override suspend fun getGames(): RequestState<MutableList<Game>> {
+        return gamesRemoteDatasource.getGames()
     }
 
     override suspend fun deleteGame(game: Game): RequestState<Game> {

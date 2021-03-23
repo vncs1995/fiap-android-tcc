@@ -3,18 +3,19 @@ package br.com.borrowgame.ui.home
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import br.com.borrowgame.domain.entity.Game
 import br.com.borrowgame.domain.entity.RequestState
-import br.com.borrowgame.domain.usecases.user.LogoutUserUseCase
+import br.com.borrowgame.domain.usecases.user.GetGamesUseCase
 import kotlinx.coroutines.launch
 
 class HomeViewModel (
-    private val logoutUserUseCase: LogoutUserUseCase
+    private val getGamesUseCase: GetGamesUseCase
 ): ViewModel() {
-    val logoutUserState = MutableLiveData<RequestState<Boolean>>()
+    val gamesState = MutableLiveData<RequestState<MutableList<Game>>>()
 
-    fun logoutUser() {
+    fun getGames() {
         viewModelScope.launch {
-            logoutUserState.value = logoutUserUseCase.logoutUser()
+            gamesState.value = getGamesUseCase.getGames()
         }
     }
 }

@@ -25,7 +25,6 @@ abstract class BaseAuthFragment : BaseFragment() {
     private val baseAuthViewModel: BaseAuthViewModel by lazy {
         ViewModelProvider(
             this,
-
             BaseViewModelFactory(GetUserLoggedUseCase(UserRepositoryImpl(UserRemoteDataSourceImpl(Firebase.auth, Firebase.firestore))))
         ).get(BaseAuthViewModel::class.java)
     }

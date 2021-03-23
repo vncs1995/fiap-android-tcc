@@ -1,7 +1,6 @@
-package br.com.borrowgame.ui.home
+package br.com.borrowgame.ui.settings
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,29 +9,25 @@ import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import br.com.borrowgame.R
-import br.com.borrowgame.data.remote.datasource.GamesRemoteDatasourceImpl
-import br.com.borrowgame.data.repository.GameRepositoryImpl
+import br.com.borrowgame.data.remote.datasource.UserRemoteDataSourceImpl
+import br.com.borrowgame.data.repository.UserRepositoryImpl
 import br.com.borrowgame.domain.entity.RequestState
-import br.com.borrowgame.domain.usecases.user.GetGamesUseCase
+import br.com.borrowgame.domain.usecases.user.LogoutUserUseCase
 import br.com.borrowgame.ui.base.auth.BaseAuthFragment
-import br.com.borrowgame.ui.home.recyclerView.GameItemAdapter
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @ExperimentalCoroutinesApi
-class HomeFragment : BaseAuthFragment() {
-    override val layout = R.layout.fragment_home
-    private lateinit var btnMyGames: Button
-    private lateinit var recyclerView: RecyclerView
+class SettingsFragment : BaseAuthFragment() {
+    override val layout = R.layout.fragment_settings
+    private lateinit var btnLogout: Button
+    private lateinit var btnAbout: Button
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         registerBackPressedAction()
-
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
@@ -40,20 +35,26 @@ class HomeFragment : BaseAuthFragment() {
         super.onViewCreated(view, savedInstanceState)
         setUpView(view)
         registerObserver()
-        this.homeViewModel.getGames()
     }
 
     private fun setUpView(view: View) {
-        recyclerView = view.findViewById(R.id.recycler_view_games)
+        btnLogout = view.findViewById(R.id.logout)
+        btnAbout = view.findViewById(R.id.about)
+
+        btnLogout.setOnClickListener {
+            this.settingsViewModel.logoutUser()
+        }
+        btnAbout.setOnClickListener {
+            findNavController().navigate(R.id.action_settingsFragment_to_aboutFragment)
+        }
     }
 
     private fun registerObserver() {
-        this.homeViewModel.gamesState.observe(viewLifecycleOwner, Observer {
+        this.settingsViewModel.logoutUserState.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is RequestState.Success -> {
-                    recyclerView.adapter = GameItemAdapter(it.data)
-                    recyclerView.layoutManager = LinearLayoutManager(context)
-                    recyclerView.setHasFixedSize(true)
+                    hideLoading()
+                    findNavController().navigate(R.id.action_settingsFragment_to_login_graph)
                 }
                 is RequestState.Error -> {
                     hideLoading()
@@ -66,20 +67,20 @@ class HomeFragment : BaseAuthFragment() {
         })
     }
 
-    private val homeViewModel:HomeViewModel by lazy {
+    private val settingsViewModel: SettingsViewModel by lazy {
         ViewModelProvider(
             this,
-            HomeViewModelFactory(
-                GetGamesUseCase(
-                    GameRepositoryImpl(
-                        GamesRemoteDatasourceImpl(
-                            Firebase.firestore,
-                            Firebase.auth
+            SettingsViewModelFactory(
+                LogoutUserUseCase(
+                    UserRepositoryImpl(
+                        UserRemoteDataSourceImpl(
+                            Firebase.auth,
+                            Firebase.firestore
                         )
                     )
                 )
             )
-        ).get(HomeViewModel::class.java)
+        ).get(SettingsViewModel::class.java)
     }
 
     private fun registerBackPressedAction() {

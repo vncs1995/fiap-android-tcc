@@ -33,4 +33,13 @@
     <string name="label_updating_app">Você precisa atualizar para continuar trocando!</string>
     <string name="label_update_now">Atualizar agora</string>
     <string name="label_update_later">Atualizar depois</string>
+    <string name="label_about_text">App desenvolvido apenas por mim,</string>
+    <string name="label_about_author">Vinicius Viana</string>
+    <string name="label_menu_home">Inicio</string>
+    <string name="label_menu_address">Endereço</string>
+    <string name="label_menu_settings">Configurações</string>
+    <string name="label_about">Sobre</string>
+    <string name="label_logout">Sair</string>
+    <string name="empty_list_error">Não existem jogos para exibir</string>
+    <string name="label_players">jogadores</string>
 </resources>

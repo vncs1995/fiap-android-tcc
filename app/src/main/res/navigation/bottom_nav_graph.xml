@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/addressFragment"
+        android:name="br.com.borrowgame.ui.address.AddressFragment"
+        android:label="AddressFragment" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="br.com.borrowgame.ui.settings.SettingsFragment"
+        android:label="SettingsFragment">
+        <action
+            android:id="@+id/action_settingsFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_login_graph"
+            app:destination="@id/login_graph" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="br.com.borrowgame.ui.home.HomeFragment"
+        android:label="HomeFragment">
+        <action
+            android:id="@+id/action_homeFragment_to_registerGameFragment"
+            app:destination="@id/registerGameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerGameFragment"
+        android:name="br.com.borrowgame.ui.registergame.RegisterGameFragment"
+        android:label="RegisterGameFragment" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="br.com.borrowgame.ui.about.AboutFragment"
+        android:label="AboutFragment" />
+    <include app:graph="@navigation/login_graph" />
+</navigation>
