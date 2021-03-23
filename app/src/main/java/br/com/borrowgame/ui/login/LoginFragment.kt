@@ -69,7 +69,7 @@ class LoginFragment : BaseFragment() {
         hideLoading()
         val navIdForArguments = arguments?.getInt(NAVIGATION_KEY)
         if (navIdForArguments == null) {
-            findNavController().navigate(R.id.bottomNavBar2)
+            findNavController().navigate(R.id.bottomNavBar)
         } else {
             findNavController().popBackStack(navIdForArguments, false)
         }

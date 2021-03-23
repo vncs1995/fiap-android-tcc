@@ -18,8 +18,4 @@
         android:id="@+id/signupFragment"
         android:name="br.com.borrowgame.ui.signup.SignupFragment"
         android:label="SignupFragment" />
-    <fragment
-        android:id="@+id/bottomNavBar2"
-        android:name="br.com.borrowgame.ui.navbar.BottomNavBar"
-        android:label="BottomNavBar" />
 </navigation>

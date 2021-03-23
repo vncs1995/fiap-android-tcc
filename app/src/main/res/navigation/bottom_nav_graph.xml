@@ -13,7 +13,7 @@
             android:id="@+id/action_settingsFragment_to_aboutFragment"
             app:destination="@id/aboutFragment" />
         <action
-            android:id="@+id/action_settingsFragment_to_login_graph"
+            android:id="@+id/action_settingsFragment_to_login_graph2"
             app:destination="@id/login_graph" />
     </fragment>
     <fragment

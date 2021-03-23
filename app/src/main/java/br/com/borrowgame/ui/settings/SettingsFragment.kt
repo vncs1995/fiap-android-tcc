@@ -54,7 +54,7 @@ class SettingsFragment : BaseAuthFragment() {
             when (it) {
                 is RequestState.Success -> {
                     hideLoading()
-                    findNavController().navigate(R.id.action_settingsFragment_to_login_graph)
+//                    findNavController().navigate(R.id.main_nav_graph)
                 }
                 is RequestState.Error -> {
                     hideLoading()
