@@ -19,6 +19,7 @@ import br.com.borrowgame.domain.entity.RequestState
 import br.com.borrowgame.domain.usecases.user.GetGamesUseCase
 import br.com.borrowgame.ui.base.auth.BaseAuthFragment
 import br.com.borrowgame.ui.home.recyclerView.GameItemAdapter
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -27,7 +28,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalCoroutinesApi
 class HomeFragment : BaseAuthFragment() {
     override val layout = R.layout.fragment_home
-    private lateinit var btnMyGames: Button
+    private lateinit var btnRegisterGame: FloatingActionButton
     private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

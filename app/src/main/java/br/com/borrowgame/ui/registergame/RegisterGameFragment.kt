@@ -68,7 +68,7 @@ class RegisterGameFragment : BaseAuthFragment(), AdapterView.OnItemSelectedListe
             when (it) {
                 is RequestState.Success -> {
                     hideLoading()
-                    findNavController().navigate(R.id.main_nav_graph)
+                    findNavController().navigate(R.id.homeFragment)
                 }
                 is RequestState.Error -> {
                     hideLoading()

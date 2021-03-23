@@ -6,10 +6,6 @@
     app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/addressFragment"
-        android:name="br.com.borrowgame.ui.address.AddressFragment"
-        android:label="AddressFragment" />
-    <fragment
         android:id="@+id/settingsFragment"
         android:name="br.com.borrowgame.ui.settings.SettingsFragment"
         android:label="SettingsFragment">
@@ -23,11 +19,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="br.com.borrowgame.ui.home.HomeFragment"
-        android:label="HomeFragment">
-        <action
-            android:id="@+id/action_homeFragment_to_registerGameFragment"
-            app:destination="@id/registerGameFragment" />
-    </fragment>
+        android:label="HomeFragment"/>
     <fragment
         android:id="@+id/registerGameFragment"
         android:name="br.com.borrowgame.ui.registergame.RegisterGameFragment"

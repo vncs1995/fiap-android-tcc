@@ -41,4 +41,5 @@
     <string name="label_logout">Logout</string>
     <string name="empty_list_error">There is no Games to list</string>
     <string name="label_players">players</string>
+    <string name="label_add_game">Add Game</string>
 </resources>

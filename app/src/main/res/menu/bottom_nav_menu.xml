@@ -2,6 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/homeFragment" android:title="@string/label_menu_home" android:icon="@drawable/home_menu" />
-    <item android:id="@+id/addressFragment" android:title="@string/label_menu_address" android:icon="@drawable/address_menu"/>
+    <item android:id="@+id/registerGameFragment" android:title="@string/label_add_game" android:icon="@drawable/ic_add"/>
     <item android:id="@+id/settingsFragment" android:title="@string/label_menu_settings" android:icon="@drawable/settings_menu" />
 </menu>
